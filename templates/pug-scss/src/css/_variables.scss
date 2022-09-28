@@ -1,0 +1,111 @@
+/* breakpoint */
+$breakpoints: (
+        "xs": "screen and (max-width: 374px)",
+        "sm": "screen and (max-width: 767px)",
+        "tb": "screen and (max-width: 1024px)",
+        "lg": "screen and (min-width: 1201px)",
+) !default;
+
+// variables
+$spDesignWidth: 750;
+$pcDesignWidth: 1200;
+$maxDesignWidth: 1400;
+$font-default: "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, Meiryo, BlinkMacSystemFont, "Helvetica Neue", "Noto Sans Japanese", sans-serif;
+$font-size-default: 1.5rem;
+$line-hight-default: 1.7;
+
+/* function */
+@function svw($val) {
+  @return ($val / $spDesignWidth*100vw);
+}
+
+@function lvw($val) {
+  @return ($val / $pcDesignWidth*100vw);
+}
+
+/* mixin */
+@mixin xs() {
+  @media #{map-get($breakpoints, "xs")} {
+    @content;
+  }
+}
+
+@mixin sm() {
+  @media #{map-get($breakpoints, "sm")} {
+    @content;
+  }
+}
+
+@mixin tb() {
+  @media #{map-get($breakpoints, "tb")} {
+    @content;
+  }
+}
+
+@mixin lg() {
+  @media #{map-get($breakpoints, "lg")} {
+    @content;
+  }
+}
+
+@mixin fontSizePC($fontSize,$lineInterval) {
+  font-size: #{$fontSize}px;
+  line-height: $lineInterval / $fontSize;
+}
+
+@mixin fontSizeSP($fontSize,$lineInterval) {
+  font-size: svw($fontSize);
+  line-height: $lineInterval / $fontSize;
+}
+
+@mixin autoMargin($width,$top:0,$bottom:0) {
+  @if($top = $bottom) {
+    width: $width;
+    margin: $top auto;
+  } @else {
+    width: $width;
+    margin: $top auto $bottom;
+  }
+}
+
+@mixin center($direction) {
+  position: absolute;
+
+  @if($direction = x) {
+    top: $margin;
+    transform: translate(-50%,0);
+  }
+  @else if($direction = y) {
+    top: 50%;
+    transform: translate(0,-50%);
+  }
+  @else if($direction = both) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+}
+
+@mixin flex($flex-direction:row,$align:flex-start,$justify:flex-start,$wrap: wrap) {
+  display: flex;
+  flex-direction: $flex-direction;
+  align-items: $align;
+  justify-content: $justify;
+  flex-wrap: $wrap;
+}
+/* class */
+.visible-lg {
+  display: none;
+
+  @include lg() {
+    display: block;
+  }
+}
+
+.visible-sm {
+  display: none;
+
+  @include sm() {
+    display: block;
+  }
+}

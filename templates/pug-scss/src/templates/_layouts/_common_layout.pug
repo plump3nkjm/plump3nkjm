@@ -1,0 +1,17 @@
+//- 共通で読み込むcssを記述する
+
+include ../_vars/_meta
+
+doctype html
+html(lang="ja")
+    head
+        title #{site_title}
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width,initial-scale=1")
+        link(rel="shortcut icon" type="image/png" href=`${img_path}favicon.png`)
+        link(rel="stylesheet" href=`${css_path}`)
+        link(rel="preconnect" href="https://fonts.gstatic.com")
+        link(href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet")
+    block body
+    script(src=`${js_path}`)

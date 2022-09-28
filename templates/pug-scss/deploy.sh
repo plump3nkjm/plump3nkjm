@@ -1,0 +1,2 @@
+yarn production
+# deploy command

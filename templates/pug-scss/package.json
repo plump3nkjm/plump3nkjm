@@ -1,0 +1,41 @@
+{
+  "name": "site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js & npm run pug",
+    "watch": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js & npm run pug:watch",
+    "hot": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js & npm run pug",
+    "production": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js & npm run pug",
+    "pug": "pug  \"src/templates/\" -o \"public/\" -P",
+    "pug:watch": "pug  \"src/templates/\" -o \"public/\" -P -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.0.1",
+    "cross-env": "^5.2.0",
+    "laravel-mix": "^4.0.16",
+    "node-sass": "^4.12.0",
+    "pug": "^2.0.4",
+    "pug-cli": "github:pugjs/pug-cli#master",
+    "recursive-readdir": "^2.2.2",
+    "resolve-url-loader": "^3.1.0",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "ie >= 9",
+    "iOS >= 10",
+    "Android >= 4.4"
+  ]
+}
